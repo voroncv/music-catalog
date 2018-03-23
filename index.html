@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Music catalog</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://getbootstrap.com/docs/4.0/examples/album/album.css">
+</head>
+<body>
+	<div id="app">
+		<header>
+			<div class="navbar navbar-dark bg-dark box-shadow">
+				<div class="container d-flex justify-content-between">
+					<a href="#" class="navbar-brand d-flex align-items-center">
+						<strong>Музыкальный альбом</strong>
+					</a>
+				</div>
+		    </div>
+	    </header>
+	    <main role="main">
+	    	<section class="jumbotron text-center">
+	    		<div class="container">
+	    			<h1 class="jumbotron-heading">Музыкальный альбом</h1>
+	    		</div>
+	    	</section>
+
+	    	<div class="album py-5 bg-light">
+	    		<div class="container" v-for="musician in musicians">
+	    			<h2 class="jumbotron-heading text-center">Музыкант: {{ musician.name }}, {{ musician.age }} лет, жанр {{ musician.genre }}. На сцене с {{ musician.careerStartYear }} года.</h2>
+	    			<hr>
+	    			<br>
+	    			<div v-for="(album, albumIndex) in musician.albums" :key="albumIndex">
+	    				<h3 class="jumbotron-heading">Альбом: <b>{{ album.name }}, {{ album.releaseYear }} год.</b></h3>
+	    				<div class="row">
+		    				<div class="col-md-4" v-for="(track, trackIndex) in album.tracks" :key="trackIndex">
+		    					<div class="card mb-4 box-shadow">
+		    						<div class="card-body">
+		    							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		    							<div class="d-flex justify-content-between align-items-center">
+		    								<div class="btn-group">
+		    									<button type="button" class="btn btn-sm btn-success">Лайк</button>
+		    									<button type="button" class="btn btn-sm btn-danger">Дислайк</button>
+		    								</div>
+		    								<small class="text-muted">Время трека: 10 минут</small>
+		    							</div>
+		    						</div>
+		    					</div>
+		    				</div>
+		    			</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </main>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
