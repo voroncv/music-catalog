@@ -125,10 +125,19 @@ let app = new Vue({
   		this.musicians[musicianIndex].albums[albumIndex].tracks[tracksIndex].isFavorite = false;
   	},
   	getMusicansFromServer () {
-  		console.log('WOW')
+  		this.$http.get(`URL_HERE`, {
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+        	this.musicians = response.body;
+        }, response => {
+        	console.log('E', response);
+        });
   	}
   },
   created() {
-  	this.getMusicansFromServer();
+  	//this.getMusicansFromServer();
   }
 });
